@@ -1,25 +1,4 @@
-version: '3.8'
+version: '3.9'
 services:
-  api:
-    build: ./src/AppHost
-    ports:
-      - '5000:80'
-    depends_on:
-      - db
-      - redis
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__Default=Host=db;Database=igame;Username=postgres;Password=postgres
-  db:
-    image: postgres:15
-    environment:
-      POSTGRES_DB: igame
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-  redis:
-    image: redis:7
-    command: redis-server --appendonly yes
-volumes:
-  pgdata:
+  placeholder:
+    image: alpine

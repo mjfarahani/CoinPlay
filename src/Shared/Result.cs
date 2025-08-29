@@ -1,11 +1,7 @@
-namespace CoinPlay.Shared;
+namespace Shared;
 
-public class Result<T>
+public record Result(bool Success, string? Error)
 {
-    public bool Success { get; init; }
-    public string? Error { get; init; }
-    public T? Value { get; init; }
-
-    public static Result<T> Ok(T value) => new() { Success = true, Value = value };
-    public static Result<T> Fail(string error) => new() { Success = false, Error = error };
+    public static Result Ok() => new(true, null);
+    public static Result Fail(string error) => new(false, error);
 }
