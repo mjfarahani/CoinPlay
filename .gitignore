@@ -6,3 +6,4 @@ obj/
 *.swp
 *.suo
 *.db
+/.vs
