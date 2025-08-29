@@ -33,6 +33,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests", "tests\Integration\IntegrationTests.csproj", "{32DB861F-C470-45F4-B7B7-2ABA5AB2157E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra", "Infra", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -181,5 +186,8 @@ Global
 		{F871D696-7A8F-40D4-A50D-6A331673A882} = {9D556B49-86D1-93A7-9596-FFAAB74EC556}
 		{28A6993C-471E-82FE-7D9E-AD3B1EC22BD9} = {0AB3BF05-4346-4AA6-1389-037BE0695223}
 		{32DB861F-C470-45F4-B7B7-2ABA5AB2157E} = {28A6993C-471E-82FE-7D9E-AD3B1EC22BD9}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7CB59798-6636-4DB2-9E3D-53B70E0DC223}
 	EndGlobalSection
 EndGlobal
