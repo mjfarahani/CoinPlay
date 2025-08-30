@@ -2,14 +2,14 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
-# Copy solution and projects
-COPY *.sln ./
-COPY ./src/AppHost/AppHost.csproj ./src/AppHost/
-COPY ./src/Modules ./src/Modules
-COPY ./src/Shared ./src/Shared
+# Copy solution and all source
+COPY ./*.sln ./
+COPY ./src ./src
 
-# Restore dependencies for AppHost
+# Move to AppHost
 WORKDIR /src/AppHost
+
+# Restore dependencies
 RUN dotnet restore AppHost.csproj
 
 # Build and publish
