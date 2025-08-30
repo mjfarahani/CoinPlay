@@ -17,6 +17,9 @@ RUN dotnet restore AppHost.csproj
 # Build and publish
 RUN dotnet publish -c Release -o /app --no-restore
 
+# Run EF migrations in build stage
+RUN dotnet ef database update --no-build --project AppHost.csproj
+
 # ---------- Runtime Stage ----------
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS runtime
 WORKDIR /app
@@ -24,5 +27,5 @@ WORKDIR /app
 # Copy published app
 COPY --from=build /app ./
 
-# Run EF migrations before starting the app
-ENTRYPOINT ["sh", "-c", "dotnet ef database update --no-build --project /src/AppHost/AppHost.csproj && dotnet AppHost.dll"]
+# Start app
+ENTRYPOINT ["dotnet", "AppHost.dll"]
