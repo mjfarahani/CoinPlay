@@ -2,14 +2,17 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
-# Copy everything
-COPY ../../ ./
+# Copy solution and projects
+COPY *.sln ./
+COPY ./src/AppHost/AppHost.csproj ./src/AppHost/
+COPY ./src/Modules ./src/Modules
+COPY ./src/Shared ./src/Shared
 
-# Restore dependencies
+# Restore dependencies for AppHost
 WORKDIR /src/AppHost
-RUN dotnet restore
+RUN dotnet restore AppHost.csproj
 
-# Build
+# Build and publish
 RUN dotnet publish -c Release -o /app --no-restore
 
 # ---------- Runtime Stage ----------
@@ -19,5 +22,5 @@ WORKDIR /app
 # Copy published app
 COPY --from=build /app ./
 
-# Run EF migrations before starting
+# Run EF migrations before starting the app
 ENTRYPOINT ["sh", "-c", "dotnet ef database update --no-build --project /src/AppHost/AppHost.csproj && dotnet AppHost.dll"]
