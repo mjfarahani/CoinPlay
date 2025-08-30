@@ -2,11 +2,13 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
-# Copy solution and all source
-COPY ./*.sln ./
-COPY ./src ./src
+# Copy solution file
+COPY CoinPlay.sln ./
 
-# Move to AppHost
+# Copy all source files
+COPY src ./src
+
+# Move to AppHost project
 WORKDIR /src/AppHost
 
 # Restore dependencies
