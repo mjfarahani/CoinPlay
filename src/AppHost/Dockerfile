@@ -6,7 +6,7 @@ WORKDIR /src
 COPY CoinPlay.sln ./
 
 # Copy all source files
-COPY src ./src
+COPY src ./
 
 # Move to AppHost project
 WORKDIR /src/AppHost
